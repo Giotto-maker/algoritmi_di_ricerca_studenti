@@ -9,14 +9,14 @@ def expand_test(P):
     ret4 = spu.expand(P, "u", spu.SearchTreeNode(None, "u", None, 0), True)
 
     print("#1 result: " + str(ret1))
-    print("Expected: " + " [(s,a, 1,t), (s,b, 2,u)]")
+    print("Expected: " + " [(s,a, 1,t), (s,b, 2,u)]\n")
 
     print("#2 result: " + str(ret2))
-    print("Expected: " + " [(s,b, 2,u), (s,a, 1,t)]")
+    print("Expected: " + " [(s,b, 2,u), (s,a, 1,t)]\n")
 
     print("#3 result: " + str(ret4))
-    print("Expected: " + " [(u,a, 1,v), (u,b, 2,v)]")
+    print("Expected: " + " [(u,b, 2,v), (u,a, 1,v)]\n")
 
     print("#4 result: " + str(ret3))
-    print("Expected: " + " [(u,b, 2,v), (u,a, 1,v)]")
+    print("Expected: " + " [(u,a, 1,v), (u,b, 2,v)]\n")
     print()
