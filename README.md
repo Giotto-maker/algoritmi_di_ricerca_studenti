@@ -1,4 +1,4 @@
-# Algoritmidiricercastudenti
+# Algoritmi di ricerca (studenti)
 
 Il progetto contiene l'implementazione degli algoritmi di ricerca presentati durante il corso di Intelligenza Aritificiale I nell'ambito del corso di laurea in [Filosofia-e-Intelligenza-Artificiale] (https://corsidilaurea.uniroma1.it/it/corso/2023/31774/home). Tale implementazione va completata
 in corrispondenza dei metodi la cui definizione è preceduta da "TODO". In particolare i metodi
@@ -66,7 +66,7 @@ Nel secondo caso le configurazioni di esecuzione possibili sono:
 dove X è il file in input da posizionare nella cartella "resources",
 bfs indica breadth-first-search (o ricerca in ampiezza), dfs indica 
 depth-first-search (o ricerca in profondità), ucs indica uniform-cost-search,
-e astar denota A* Search.
+e astar denota A* Search. Nel progetto fornito X = 'input_file.xls'
 
 Si noti che, senza aver prima implementato quanto richiesto, l'esecuzione del codice 
 solleverà un'eccezione di tipo "Not Implemented".
