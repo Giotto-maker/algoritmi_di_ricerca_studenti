@@ -1,6 +1,8 @@
 import os
 import sys
 import xlrd
+# andolfi@diag.uniroma1.it
+
 
 # Define the class representing the search Problem
 class Problem:
@@ -116,19 +118,30 @@ def expand(problem, state, parent, revAlphOrder):
 
 ''' TODO: backtracks the nodes in the search graph from N applying recursively function f to them '''
 def walkBackF(N, f):
-  raise NotImplementedError
+  # Implementazione iterativa
+  '''
+  walk = []
+  curr = N 
+  while(curr.PARENT != None):
+    walk.insert(0,f(curr))
+    curr = curr.PARENT
+  return walk
+  '''
+  # Implementazione ricorsiva
+  if N.PARENT == None:  return []
+  return walkBackF(N.PARENT, f) + f(N)
 
 ''' TODO: backtracks the actions in the search graph from N '''
 def walkBack(N):
-  raise NotImplementedError
+  return walkBackF(N, lambda x: [x.ACTION])
 
 ''' TODO: backtracks the states in the search graph from N '''
 def walkBackS(N):
-  raise NotImplementedError
+  return walkBackF(N, lambda x: [x.STATE])
 
 ''' TODO: backtracks <actions,states> in the search graph from N '''
 def walkBackPair(N):
-  raise NotImplementedError
+  return walkBackF(N, lambda x: [(x.ACTIONS, x.STATE)])
 
 ''' TODO: define a consistent heuristics '''
 def heuristics(N):
