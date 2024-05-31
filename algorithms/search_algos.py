@@ -9,15 +9,16 @@ from dataclasses import dataclass, field
 from graphics.frontier_vis import build_frontier_representation, draw_frontier_states
 
 
-''' TODO: implement Breadth-first search'''
-def BFS(problem, revAlphOrder, printFrontier=False):
-    raise NotImplementedError
+def BFS(problem, revAlphOrder, printFrontier=True):
     node_artists, axG, axF = graph_vis.init_my_graph_visualization(problem)
     i = 0
 
-    # TODO: init datastructures and replace "condition" accordingly
-    condition = True
-    F = None
+    F = queue.Queue()
+    visited = set()
+    start_node = spu.SearchTreeNode(None, problem.START, None, 0)
+    if start_node.STATE in problem.GOALS:   return start_node
+    F.put(start_node)
+    visited.add(start_node)
     
     if (printFrontier): 
         frontier_items = build_frontier_representation(F.queue, 'xfs')  
@@ -25,15 +26,20 @@ def BFS(problem, revAlphOrder, printFrontier=False):
     
     plt.waitforbuttonpress()
 
-    # TODO: main loop
-    while not(condition):
-        # TODO: interact with the data structure
-        curr = None
+    while not(F.empty()):
+        curr = F.get()
 
         graph_vis.update_my_graph_visualization(axG, [curr], node_artists, i, False)
         i += 1
         
-        # TODO: expansion logic
+        for N in spu.expand(problem, curr.STATE, curr, revAlphOrder):
+
+            if N.STATE in problem.GOALS:
+                return N
+            
+            elif not N in visited:
+                visited.add(N)
+                F.put(N)
 
         graph_vis.update_my_graph_visualization(axG, list(F.queue), node_artists, i, True)
 

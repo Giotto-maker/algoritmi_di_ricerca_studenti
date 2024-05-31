@@ -110,13 +110,19 @@ class SearchTreeNode:
 
 
 
-''' TODO: return the nodes that can be reached through valid actions from the current state 
-          and respect the order 'revAlphOrder' enforced on the actions available from the current state
-'''
+# return the nodes that can be reached through valid actions from the current state 
+# and respect the order 'revAlphOrder' enforced on the actions available from the current state
 def expand(problem, state, parent, revAlphOrder):
-  raise NotImplementedError
+  ret = []
+  for action in problem.actions(state):
+    new_state = problem.result(action, state)
+    cost = parent.COST + problem.action_cost(action, state)
+    new_node = SearchTreeNode(action, new_state, parent, cost)
+    ret.append(new_node)
+  ret.sort(key= lambda x: x.ACTION, reverse=revAlphOrder)
+  return ret
 
-''' TODO: backtracks the nodes in the search graph from N applying recursively function f to them '''
+#backtracks the nodes in the search graph from N applying recursively function f to them
 def walkBackF(N, f):
   # Implementazione iterativa
   '''
@@ -131,15 +137,15 @@ def walkBackF(N, f):
   if N.PARENT == None:  return []
   return walkBackF(N.PARENT, f) + f(N)
 
-''' TODO: backtracks the actions in the search graph from N '''
+# backtracks the actions in the search graph from N '''
 def walkBack(N):
   return walkBackF(N, lambda x: [x.ACTION])
 
-''' TODO: backtracks the states in the search graph from N '''
+# backtracks the states in the search graph from N '''
 def walkBackS(N):
   return walkBackF(N, lambda x: [x.STATE])
 
-''' TODO: backtracks <actions,states> in the search graph from N '''
+# backtracks <actions,states> in the search graph from N '''
 def walkBackPair(N):
   return walkBackF(N, lambda x: [(x.ACTIONS, x.STATE)])
 
