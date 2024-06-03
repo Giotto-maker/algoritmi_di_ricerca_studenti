@@ -26,13 +26,14 @@ del virtual environment che si intende utilizzare. Sostituire X rispettivamente 
 
 - [ ] [matplotlib] (https://pypi.org/project/matplotlib/): per la visualizzazione grafica
 - [ ] [networkx] (https://pypi.org/project/networkx/): per la creazione e gestione di grafi
-- [ ] [xlrd] (https://xlrd.readthedocs.io/en/latest/): per la lettura di file in formato .xls 
+- [ ] [xlrd] (https://xlrd.readthedocs.io/en/latest/): per la lettura di file in formato .xls
+- [ ] [pydot] (https://pypi.org/project/pydot/): interfaccia per graphviz
 
 Un passaggio ulteriore è richiesto per il setup della seguente libreria:
 
 - [ ] [graphviz] (https://pypi.org/project/graphviz/), per la visualizzazione interattiva degli algoritmi: 
     la libreria deve essere installata come le altre in primo luogo mediante pip nel virtual environment 
-    ed in seguito anche sul sistema seguendo le seguenti [istruzioni] (https://forum.graphviz.org/t/new-simplified-installation-procedure-on-windows/224)
+    **E** in seguito anche sul sistema seguendo le seguenti [istruzioni] (https://forum.graphviz.org/t/new-simplified-installation-procedure-on-windows/224)
 
 ## Esecuzione 
 
