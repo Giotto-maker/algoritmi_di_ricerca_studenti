@@ -55,7 +55,7 @@ def test_my_algorithm(P, algorithm, reverse):
     # runs uniform cost search in lex. order
     elif (algorithm == "ucs" and not reverse):
         print("Uniform Cost LEX")
-        N = algos.uniformCost(P, False)
+        N = algos.uniform_cost(P, False)
 
         if(N == None):
             print("Failure")
@@ -66,7 +66,7 @@ def test_my_algorithm(P, algorithm, reverse):
     # runs uniform cost search in inverse lex. order
     elif (algorithm == "ucs" and reverse):
         print("Uniform Cost Inv LEX")
-        N = algos.uniformCost(P, True)
+        N = algos.uniform_cost(P, True)
 
         if(N == None):
             print("Failure")

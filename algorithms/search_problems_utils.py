@@ -112,12 +112,16 @@ class SearchTreeNode:
 
 # return the nodes that can be reached through valid actions from the current state 
 # and respect the order 'revAlphOrder' enforced on the actions available from the current state
-def expand(problem, state, parent, revAlphOrder):
+def expand(problem, state, parent, revAlphOrder, info=False):
   ret = []
   for action in problem.actions(state):
     new_state = problem.result(action, state)
     cost = parent.COST + problem.action_cost(action, state)
     new_node = SearchTreeNode(action, new_state, parent, cost)
+
+    if info:
+      new_node.COST += heuristics(new_node)
+      new_node.COST = round(new_node.COST, 3)
     ret.append(new_node)
   ret.sort(key= lambda x: x.ACTION, reverse=revAlphOrder)
   return ret
@@ -147,11 +151,16 @@ def walkBackS(N):
 
 # backtracks <actions,states> in the search graph from N '''
 def walkBackPair(N):
-  return walkBackF(N, lambda x: [(x.ACTIONS, x.STATE)])
+  return walkBackF(N, lambda x: [(x.ACTION, x.STATE)])
 
 ''' TODO: define a consistent heuristics '''
 def heuristics(N):
-  return NotImplementedError
+  estimate = 0.1
+  state = N.STATE 
+  state_number = int(''.join([character for character in state if character.isdigit()]))
+  if state_number % 2 == 0:
+    estimate += 0.9
+  return estimate
 
 
 
